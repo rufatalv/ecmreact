@@ -1,0 +1,97 @@
+.header {
+    width: 100%;
+    background: #f9f9f9;
+    padding: 1rem 4.5rem;
+    // position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(0);
+    z-index: 55;
+    box-shadow: none;
+    -webkit-transition: transform .3s ease;
+    -moz-transition: transform .3s ease;
+    -o-transition: transform .3s ease;
+    -ms-transition: transform .3s ease;
+    transition: transform .3s ease;
+
+    .headerLeft {
+        display: flex;
+        align-items: center;
+
+        .logo {
+            a {
+                color: #101010;
+                font-size: 2rem;
+            }
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            font-weight: 500;
+            color: #101010;
+
+            li {
+                cursor: pointer;
+                padding: 10px 15px;
+
+                &:hover {
+                    background-color: #f2f2f2;
+                }
+
+                a {
+                    color: #101010;
+                }
+            }
+        }
+    }
+
+    .headerRight {
+        .cartBtn {
+            cursor: pointer;
+        }
+
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+
+        &.loggedIn {
+            .headerButtons {
+                display: none;
+                gap: 1rem;
+            }
+        }
+
+        .headerButtons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            background: #101010;
+            color: #f2f2f2;
+            border: 1px solid #e1e1e1;
+            text-transform: capitalize;
+            font-size: 1rem;
+            padding: 0.6rem 0.8rem;
+
+            &.button-muted {
+                background: #f2f2f2;
+                color: #101010;
+            }
+        }
+    }
+
+    .headerProfile {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        .button {
+            font-size: 0.9rem;
+        }
+    }
+}
