@@ -44,7 +44,7 @@ const App = (props) => {
           <Route path={"/register"} element={<Register />} />
           <Route path={"/resetpass"} element={<ResetPass />} />
           <Route
-            path={"/admin"}
+            path={"/admin"} 
             element={
               <WithAdminAuth>
                 <AdminPanel />
