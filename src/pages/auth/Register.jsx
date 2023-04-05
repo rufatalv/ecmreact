@@ -64,7 +64,6 @@ const Register = () => {
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
         draggable
         theme="light"
       />

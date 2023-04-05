@@ -1,7 +1,17 @@
 import userTypes from "./userTypes";
 import { takeLatest, call, all, put } from "redux-saga/effects";
-import { resetPasswordSuccess, signInSuccess, signOutUserSuccess, userError } from "./user.actions";
-import { GoogleProvider, auth, getCurrentUser, handleUserProfile } from "../../firebase/utils";
+import {
+  resetPasswordSuccess,
+  signInSuccess,
+  signOutUserSuccess,
+  userError,
+} from "./user.actions";
+import {
+  GoogleProvider,
+  auth,
+  getCurrentUser,
+  handleUserProfile,
+} from "../../firebase/utils";
 import { toast } from "react-toastify";
 import { history } from "../../helpers/history";
 import { handleResetPasswordAPI } from "./user.helpers";
@@ -24,7 +34,9 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
 
 export function* emailSignIn({ payload: { email, password } }) {
   try {
-    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    const { user } = yield auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      toast.error(error.message)
+    });
     yield getSnapshotFromUserAuth(user);
     if (user) {
       toast.success("signed in");
@@ -47,7 +59,11 @@ export function* signUpUser({
       yield put(userError(err));
       return;
     }
-    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    const { user } = yield auth
+      .createUserWithEmailAndPassword(email, password)
+      .catch((error) => {
+        toast.error(error.message);
+      });
     const additionalData = { displayName };
     yield getSnapshotFromUserAuth(user, additionalData);
     // yield call(handleUserProfile({userAuth: user, additionalData: { displayName }}));
@@ -92,21 +108,19 @@ export function* onSignOutUserStart() {
 
 export function* resetPassword({ payload: { email } }) {
   try {
-  yield call(handleResetPasswordAPI, email)
-  yield put(
-    resetPasswordSuccess()
-  )
+    yield call(handleResetPasswordAPI, email);
+    yield put(resetPasswordSuccess());
   } catch (error) {
-    yield put(userError(error))
+    yield put(userError(error));
   }
 }
 
 export function* googleSignIn() {
-  const {user} = yield auth.signInWithPopup(GoogleProvider)
-  yield getSnapshotFromUserAuth(user)
+  const { user } = yield auth.signInWithPopup(GoogleProvider);
+  yield getSnapshotFromUserAuth(user);
 }
-export function* onGoogleSignInStart(){
-  yield takeLatest(userTypes.GOOGLE_SIGN_IN_START,googleSignIn)
+export function* onGoogleSignInStart() {
+  yield takeLatest(userTypes.GOOGLE_SIGN_IN_START, googleSignIn);
 }
 
 export function* onResetPasswordStart() {
