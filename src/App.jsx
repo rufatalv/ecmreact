@@ -38,6 +38,7 @@ const App = (props) => {
           <Route path={"/register"} element={<Register />} />
           <Route path={"/resetpass"} element={<ResetPass />} />
           <Route path={"/search"} element={<Search />} />
+          <Route path={"/search/:filterType"} element={<Search />} />
           <Route
             path={"/admin"}
             element={

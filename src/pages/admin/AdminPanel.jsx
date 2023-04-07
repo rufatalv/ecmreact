@@ -39,7 +39,7 @@ const Admin = (props) => {
   };
   useEffect(() => {
     dispatch(fetchProductsStart());
-  }, [dispatch]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

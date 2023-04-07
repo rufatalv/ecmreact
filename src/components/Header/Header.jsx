@@ -20,7 +20,7 @@ const Header = (props) => {
       <div className="headerLeft">
         <BsGearFill size={"24px"} color={"#101010"} />
         <div className="logo">
-          <Link to={"/"}>AUTOGEAR</Link>
+          <Link to={"/"}>eCommerce</Link>
         </div>
         <ul>
           <li>

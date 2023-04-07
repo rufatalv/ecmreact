@@ -1,0 +1,43 @@
+ul {
+    list-style: none;
+}
+
+.productResults {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.product {
+    width: 400px;
+    max-height: 24rem;
+    border: 1px solid #e1e1e1;
+
+    .thumb {
+        width: 100%;
+        background: #f1f1f1;
+        position: relative;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    .details{
+        padding: 1.25rem;
+        .name{
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        &-left{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
