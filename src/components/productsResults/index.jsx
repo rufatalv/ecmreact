@@ -21,7 +21,7 @@ const ProductResults = ({ }) => {
       fetchProductsStart({ filterType })
     )
   }, [filterType]);
-
+ 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
     navigate(`/search/${nextFilter}`);
