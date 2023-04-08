@@ -15,30 +15,38 @@ export const handleAddProduct = (product) => {
   });
 };
 
-
-export const handleFetchProducts = ({ filterType }) => {
+export const handleFetchProducts = ({ filterType, startAfterDoc, persistProducts = []}) => {
   return new Promise((resolve, reject) => {
+    const PAGE_SIZE = 6;
+    let ref = firestore
+      .collection("products")
+      .orderBy("createdDate")
+      .limit(PAGE_SIZE);
 
-    let ref = firestore.collection('products').orderBy('createdDate');
-
-    if (filterType) ref = ref.where('productCategory', '==', filterType);
-
+    if (filterType) ref = ref.where("productCategory", "==", filterType);
+    if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
     ref
       .get()
-      .then(snapshot => {
-        const productsArray = snapshot.docs.map(doc => {
-          return {
-            ...doc.data(),
-            documentID: doc.id
-          }
-        });
-        resolve(productsArray);
+      .then((snapshot) => {
+
+        const totalCount = snapshot.size
+        const data = [
+          ...persistProducts,
+          ...snapshot.docs.map((doc) => {
+            return {
+              ...doc.data(),
+              documentID: doc.id,
+            };
+          })
+        ]
+        resolve({data, queryDoc: snapshot.docs[totalCount - 1],
+        isLastPage: totalCount < PAGE_SIZE});
       })
-      .catch(err => {
+      .catch((err) => {
         reject(err);
-      })
-  })
-}
+      });
+  });
+};
 export const handleDeleteProduct = (documentID) => {
   console.log(documentID, 1);
   return new Promise((resolve, reject) => {

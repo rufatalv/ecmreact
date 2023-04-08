@@ -26,6 +26,7 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
     yield put(
       signInSuccess({
         id: snapshot.id,
+        photoURL: snapshot.photoURL,
         ...snapshot.data(),
       })
     );
@@ -79,6 +80,7 @@ export function* onSignUpUserStart() {
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield getCurrentUser();
+    console.log(userAuth.photoURL)
     if (!userAuth) return;
     yield getSnapshotFromUserAuth(userAuth);
   } catch (err) {

@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import { useDispatch } from "react-redux";
 import WithAdminAuth from "./hooks/withAdminAuth";
 import Search from "./pages/search/Search";
+import ProductDetails from "./pages/productDetails/ProductDetails";
 const App = (props) => {
   const dispatch = useDispatch();
 
@@ -36,6 +37,7 @@ const App = (props) => {
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/auth"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
+          <Route path={"/product/:productID"} element={<ProductDetails />} />
           <Route path={"/resetpass"} element={<ResetPass />} />
           <Route path={"/search"} element={<Search />} />
           <Route path={"/search/:filterType"} element={<Search />} />

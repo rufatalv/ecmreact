@@ -3,13 +3,14 @@ ul {
 }
 
 .productResults {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     gap: 2rem;
     width: 100%;
 }
 
 .product {
-    width: 400px;
+    max-width: 75%;
     max-height: 24rem;
     border: 1px solid #e1e1e1;
 
