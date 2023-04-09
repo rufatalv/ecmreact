@@ -9,7 +9,6 @@ const RootLayout = ({currentUser}) => {
   history.location = useLocation();
   return (
     <>
-      <AdminToolbar />
       <Header currentUser ={currentUser} />
       <div className="content">
         <Outlet />
