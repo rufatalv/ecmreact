@@ -6,6 +6,7 @@ import {
   setProduct,
 } from "../../redux/products/products.actions";
 import "./styles.scss";
+import { addProduct } from "../../redux/cart/cart.actions";
 const mapState = (state) => ({
   product: state.productsData.product,
 });
@@ -15,7 +16,7 @@ const ProductDetails = ({}) => {
   const { productID } = useParams();
   const { product } = useSelector(mapState);
 
-  const { productThumbnail, productName, productPrice, productDescription } =
+  const { documentID, productThumbnail, productName, productPrice, productDescription } =
     product;
 
   useEffect(() => {
@@ -25,7 +26,9 @@ const ProductDetails = ({}) => {
       dispatch(setProduct({}));
     };
   }, []);
-
+  const handleAddCart = (product) => {
+      dispatch(addProduct(product))
+  }
   const configAddToCartBtn = {
     type: "button",
   };
@@ -54,7 +57,7 @@ const ProductDetails = ({}) => {
 
           <h1>${productPrice}</h1>
           <div className="product-modal-action">
-            <button className="button" type="button">Add to Cart</button>
+            <button className="button" onClick={() => {handleAddCart(product)}} type="button">Add to Cart</button>
           </div>
         </div>
       </div>

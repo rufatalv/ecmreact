@@ -1,18 +1,23 @@
-import cartTypes from "./cart.types";
+import cartTypes from './cart.types';
+import { handleAddToCart } from './cart.utils';
 
-const initialState = {
-    cartItems: []
-} 
-const cartReducer = (state = initialState, action) => {
-    switch(action.type){
-        case cartTypes.ADD_TO_CART: 
-        return{
-            ...state,
-            cartItems: [
-                ...state
-            ]
-        }
-        default:
-            return state;
-    }
-}
+const INITIAL_STATE = {
+  cartItems: []
+};
+
+const cartReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case cartTypes.ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: handleAddToCart({
+            prevCartItems: state.cartItems,
+            nextCartItem: action.payload
+          })
+      };
+    default:
+      return state;
+  }
+};
+
+export default cartReducer;
