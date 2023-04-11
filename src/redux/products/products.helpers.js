@@ -42,7 +42,7 @@ export const handleFetchProducts = ({ filterType, startAfterDoc, persistProducts
         resolve({
           data,
           queryDoc: snapshot.docs[totalCount - 1],
-          isLastPage: totalCount < 1
+          isLastPage: totalCount < pageSize
         });
       })
       .catch(err => {

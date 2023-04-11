@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { BsGearFill } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
+import { CiShoppingBasket } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { signOutUserStart } from "../../redux/user/user.actions";
 import { checkUserIsAdmin } from "../../utils";
+import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
-const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapState = (state) => ({
+  currentUser: state.user.currentUser,
+  totalNumCartItems: selectCartItemsCount(state)
 });
 const Header = (props) => {
   const [dropdown, setDropdown] = useState(false);
-  const { currentUser } = useSelector(mapState);
-  
+  const { currentUser, totalNumCartItems } = useSelector(mapState);
+
   const dispatch = useDispatch();
   const isAdmin = checkUserIsAdmin(currentUser);
   const signOutFromAccount = () => {
@@ -39,6 +42,9 @@ const Header = (props) => {
           <li>
             <Link to="/dashboard">Featured</Link>
           </li>
+          <li>
+            <a href="https://oauth.vk.com/authorize?client_id=6287487&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1">VK LOGIN</a>
+          </li>
         </ul>
       </div>
       <div className="headerRight">
@@ -53,6 +59,10 @@ const Header = (props) => {
         {currentUser ? (
           <div className="headerProfile">
             <div className="headerInner">
+              <div className="headerBasket">
+                <CiShoppingBasket size={"24px"} color={"#101010"} />{" "}
+                <span>{totalNumCartItems}</span>
+              </div>
               <div>{currentUser.displayName}</div>
               <div className="headerImg">
                 <img src={currentUser.photoURL} alt="" />
