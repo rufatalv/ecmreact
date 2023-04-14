@@ -1,4 +1,4 @@
-export {default as HomePage} from './routes/HomePage';
+export {default as Home} from './routes/Home/Home';
 export {default as AboutPage} from './routes/AboutPage';
 export {default as Login} from './routes/auth/Login'
 export {default as Register} from './routes/auth/Register'
@@ -7,3 +7,4 @@ export {default as Dashboard} from './routes/Dashboard/Dashboard'
 export {default as Search} from './routes/search/Search'
 export {default as ProductDetails} from './routes/productDetails/ProductDetails'
 export {default as AdminPanel} from './routes/admin/AdminPanel'
+export {default as ProtectedRoutes} from './routes/protectedRoutes/protectedRoutes'

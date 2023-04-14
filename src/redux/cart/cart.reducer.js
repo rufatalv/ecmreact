@@ -5,8 +5,18 @@ import {
   handleRemoveFromCart,
 } from "./cart.utils";
 
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+
+
 const INITIAL_STATE = {
   cartItems: [],
+};
+
+const persistConfig = {
+  key: "cart",
+  storage: storage,
+  whitelist: ["cartData"]
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -39,5 +49,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+// export default persistReducer(persistConfig, cartReducer)
 
 export default cartReducer;

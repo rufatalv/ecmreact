@@ -28,8 +28,8 @@ const Header = (props) => {
   return (
     <header className="header">
       <div className="headerLeft">
-        <BsGearFill size={"24px"} color={"#101010"} />
         <div className="logo">
+          <BsGearFill size={"24px"} color={"#101010"} />
           <Link to={"/"}>eCommerce</Link>
         </div>
         <ul>
@@ -56,17 +56,16 @@ const Header = (props) => {
         {currentUser ? (
           <div className="headerProfile">
             <div className="headerInner">
-              <Link to={'/cart'} className="headerBasket">
+              <Link to={"/cart"} className="headerBasket">
                 <CiShoppingBasket size={"24px"} color={"#101010"} />{" "}
                 <span>{totalNumCartItems}</span>
               </Link>
-              <div>{currentUser.displayName}</div>
-              {/* <div onClick={() => props.onShowCart()}>showcart</div> */}
-              <div
-                className="headerArrow"
-                onClick={() => setDropdown((current) => !current)}
-              >
-                <IoIosArrowDown size={"24px"} color={"#101010"} />
+              <div className="headerInner-right" onClick={() => setDropdown((current) => !current)}>
+                <div>{currentUser.displayName}</div>
+                {/* <div onClick={() => props.onShowCart()}>showcart</div> */}
+                <div className="headerArrow">
+                  <IoIosArrowDown size={"24px"} color={"#101010"} />
+                </div>
               </div>
             </div>
             <div

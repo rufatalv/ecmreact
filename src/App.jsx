@@ -1,16 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage, Login, Register, ResetPass, Search, ProductDetails, AdminPanel } from "./pages";
-import { ToastContainer } from "react-toastify";
-import "./default.scss";
-import ProtectedRoutes from "./pages/routes/protectedRoutes/protectedRoutes";
-import RootLayout from "./components/layout/RootLayout";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import {
+  Login,
+  Register,
+  ResetPass,
+  Search,
+  ProductDetails,
+  AdminPanel,
+  Dashboard,
+  ProtectedRoutes,
+  Home,
+} from "./pages";
+import { Cart, RootLayout } from "./components";
 import { checkUserSession } from "./redux/user/user.actions";
-import WithAuth from "./hooks/WithAuth";
-import Dashboard from "./pages/routes/Dashboard/Dashboard";
 import { useDispatch } from "react-redux";
+import "./default.scss";
 import WithAdminAuth from "./hooks/withAdminAuth";
-import Cart from "./components/Cart/Cart";
+import { WithAuth } from "./hooks";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -31,7 +38,7 @@ const App = (props) => {
       />
       <Routes>
         <Route path={"/"} element={<RootLayout />}>
-          <Route path={"/"} element={<HomePage />} />
+          <Route path={"/"} element={<Home />} />
           <Route path={"/auth"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/product/:productID"} element={<ProductDetails />} />

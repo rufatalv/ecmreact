@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "./userReducer";
 import productsReducer from "./products/products.reducer";
@@ -14,7 +14,7 @@ export const rootReducer = combineReducers({
 const configStorage = {
   key: "root",
   storage,
-  whitelist: ["cartData"],
+  whitelist: ["user", "cartData"],
 };
 
 export default persistReducer(configStorage, rootReducer);

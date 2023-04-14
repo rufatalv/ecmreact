@@ -42,4 +42,5 @@ const userReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default persistReducer(persistConfig, userReducer);
+// export default persistReducer(persistConfig, userReducer);
+export default userReducer

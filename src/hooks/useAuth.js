@@ -15,7 +15,7 @@ const useAuth = props => {
       navigate('/auth');
     }
 
-  }, [currentUser]);
+  }, [currentUser, navigate]);
 
   return currentUser;
 };

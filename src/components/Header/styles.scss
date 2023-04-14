@@ -2,7 +2,7 @@
     width: 100%;
     background: #f9f9f9;
     padding: 2rem 4.5rem;
-    position: relative;
+    position: absolute;
     // position: absolute;
     top: 0;
     display: flex;
@@ -23,12 +23,14 @@
         position: relative;
         align-items: center;
         cursor: pointer;
-        span{
+
+        span {
             position: absolute;
             font-size: 0.9rem;
             right: 20%;
             bottom: 0%;
         }
+
         &:hover {
             background: #f2f2f2;
         }
@@ -39,6 +41,8 @@
         align-items: center;
 
         .logo {
+            margin-right: 1.25rem;
+
             a {
                 color: #101010;
                 font-size: 2rem;
@@ -52,7 +56,6 @@
             font-weight: 500;
             color: #101010;
             align-items: center;
-            margin-left: 0.5rem;
 
             li {
                 cursor: pointer;
@@ -77,9 +80,11 @@
         .cartBtn {
             cursor: pointer;
         }
-        a{
+
+        a {
             color: #101010;
         }
+
         display: flex;
         gap: 2rem;
         align-items: center;
@@ -102,7 +107,7 @@
             border: 1px solid #e1e1e1;
             text-transform: capitalize;
             font-size: 14px;
-            padding: 0.6rem 0.8rem;
+            padding: 1.6rem;
 
             &.button-muted {
                 background: #f2f2f2;
@@ -119,7 +124,13 @@
             align-items: center;
             gap: 0.5rem;
 
+            &-right {
+                display: flex;
+                cursor: pointer;
+            }
+
             .headerArrow {
+                margin-left: 0.5rem;
                 cursor: pointer;
                 display: flex;
             }

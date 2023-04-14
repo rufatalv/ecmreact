@@ -5,6 +5,9 @@ import "./styles.scss";
 import { fetchProductsStart } from "../../redux/products/products.actions";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadMore from "../loadMore";
+import Skeleton from "react-loading-skeleton";
+import ProductSkeleton from "./ProductSkeleton";
+import { useState } from "react";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -14,10 +17,11 @@ const ProductResults = ({}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { filterType } = useParams();
-
   const { products } = useSelector(mapState);
+  const [loading, setLoading] = useState(false);
   const { data, queryDoc, isLastPage } = products;
   useEffect(() => {
+    setLoading(true);
     dispatch(fetchProductsStart({ filterType }));
   }, [filterType]);
 
@@ -27,6 +31,9 @@ const ProductResults = ({}) => {
   };
 
   if (!Array.isArray(data)) return null;
+  if (products.length > 0) {
+    setLoading(false);
+  }
   if (products.length < 1) {
     return (
       <div className="products">
@@ -83,7 +90,7 @@ const ProductResults = ({}) => {
             return null;
 
           const configProduct = {
-            ...product
+            ...product,
           };
 
           return <Product key={pos} {...configProduct} />;

@@ -16,8 +16,13 @@ const ProductDetails = ({}) => {
   const { productID } = useParams();
   const { product } = useSelector(mapState);
 
-  const { documentID, productThumbnail, productName, productPrice, productDescription } =
-    product;
+  const {
+    documentID,
+    productThumbnail,
+    productName,
+    productPrice,
+    productDescription,
+  } = product;
 
   useEffect(() => {
     dispatch(fetchProductStart(productID));
@@ -27,8 +32,8 @@ const ProductDetails = ({}) => {
     };
   }, []);
   const handleAddCart = (product) => {
-      dispatch(addProduct(product))
-  }
+    dispatch(addProduct(product));
+  };
   const configAddToCartBtn = {
     type: "button",
   };
@@ -57,7 +62,15 @@ const ProductDetails = ({}) => {
 
           <h1>${productPrice}</h1>
           <div className="product-modal-action">
-            <button className="button" onClick={() => {handleAddCart(product)}} type="button">Add to Cart</button>
+            <button
+              className="button"
+              onClick={() => {
+                handleAddCart(product);
+              }}
+              type="button"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

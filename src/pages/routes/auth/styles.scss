@@ -21,28 +21,6 @@
     text-decoration: none;
 }
 
-.button,
-.button-link,
-.button-muted,
-.provider-facebook,
-.provider-github,
-.provider-google {
-    background: #101010;
-    padding: 12px 16px;
-    border: 1px solid #101010;
-    color: #fff;
-    font-weight: 700;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
 .provider-google {
     background: #fff;
     color: #3a3a3a;

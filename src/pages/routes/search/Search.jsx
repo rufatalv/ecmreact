@@ -1,6 +1,5 @@
 import React from "react";
-import ProductsResults from "../../../components/productsResults/index";
-import FormSelect from "../../../components/forms/FormSelect";
+import { FormSelect, ProductsResults } from "../../../components";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Search = () => {
@@ -32,6 +31,7 @@ const Search = () => {
   return (
     <>
       <FormSelect {...configFilters} />
+      
       <ProductsResults />
     </>
   );

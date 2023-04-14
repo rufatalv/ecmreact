@@ -9,7 +9,7 @@ html {
 html,
 body {
   height: 100%;
-  background-color: #fff;
+  background-color: #f9f9f9;
   color: #101010;
   font-weight: 500;
   font-family: var(--font-main);
@@ -46,7 +46,30 @@ p {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 10rem;
+  padding: 6.25rem;
+  padding-top: 7.5rem;
   animation: fadeIn 1s ease;
   transition: all 1s;
+}
+
+.button,
+.button-link,
+.button-muted,
+.provider-facebook,
+.provider-github,
+.provider-google {
+    background: #101010;
+    padding: 12px 16px;
+    border: 1px solid #101010;
+    color: #fff;
+    font-weight: 700;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
 }

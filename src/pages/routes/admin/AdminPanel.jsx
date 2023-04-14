@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../../../components/Modal";
-import FormInput from "../../../components/forms/FormInput";
-import FormSelect from "../../../components/forms/FormSelect";
-import Button from "../../../components/forms/Button";
-import "./styles.scss";
+import {
+  Button,
+  FormSelect,
+  FormInput,
+  Modal,
+  LoadMore,
+} from "../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addProductsStart,
   deleteProductStart,
   fetchProductsStart,
 } from "../../../redux/products/products.actions";
-import LoadMore from "../../../components/loadMore";
 import { CKEditor } from "ckeditor4-react";
+import "./styles.scss";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
 });
+
 const Admin = (props) => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const Admin = (props) => {
   const [productName, setProductName] = useState("");
   const [productThumbnail, setProductThumbnail] = useState("");
   const [productPrice, setProductPrice] = useState(0);
-  const [productDescription, setProductDescription] = useState('')
+  const [productDescription, setProductDescription] = useState("");
   const { data, queryDoc, isLastPage } = products;
 
   useEffect(() => {
@@ -42,21 +45,21 @@ const Admin = (props) => {
     dispatch(
       fetchProductsStart({
         startAfterDoc: queryDoc,
-        persistProducts: data
+        persistProducts: data,
       })
     );
-  }
+  };
 
   const configLoadMore = {
-    onLoadMoreEvt: handleLoadMore
-  }
+    onLoadMoreEvt: handleLoadMore,
+  };
   const resetForm = () => {
     setHideModal(true);
     setProductCategory("mens");
     setProductName("");
     setProductThumbnail("");
     setProductPrice(0);
-    setProductDescription('')
+    setProductDescription("");
   };
 
   const handleSubmit = (e) => {
@@ -125,7 +128,9 @@ const Admin = (props) => {
               value={productPrice}
               handleChange={(e) => setProductPrice(e.target.value)}
             />
-            <CKEditor onChange={(e) => setProductDescription(e.editor.getData())} />
+            <CKEditor
+              onChange={(e) => setProductDescription(e.editor.getData())}
+            />
             <br></br>
             <Button type="submit">Add product</Button>
           </form>
