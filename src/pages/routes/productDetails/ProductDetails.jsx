@@ -4,9 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import {
   fetchProductStart,
   setProduct,
-} from "../../redux/products/products.actions";
+} from "../../../redux/products/products.actions";
 import "./styles.scss";
-import { addProduct } from "../../redux/cart/cart.actions";
+import { addProduct } from "../../../redux/cart/cart.actions";
 const mapState = (state) => ({
   product: state.productsData.product,
 });

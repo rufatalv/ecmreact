@@ -1,6 +1,6 @@
 import React from "react";
-import ProductsResults from "../../components/productsResults/index";
-import FormSelect from "../../components/forms/FormSelect";
+import ProductsResults from "../../../components/productsResults/index";
+import FormSelect from "../../../components/forms/FormSelect";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Search = () => {

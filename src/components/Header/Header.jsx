@@ -11,7 +11,7 @@ import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
-  totalNumCartItems: selectCartItemsCount(state)
+  totalNumCartItems: selectCartItemsCount(state),
 });
 const Header = (props) => {
   const [dropdown, setDropdown] = useState(false);
@@ -42,7 +42,6 @@ const Header = (props) => {
           <li>
             <Link to="/dashboard">Featured</Link>
           </li>
-         
         </ul>
       </div>
       <div className="headerRight">
@@ -57,14 +56,12 @@ const Header = (props) => {
         {currentUser ? (
           <div className="headerProfile">
             <div className="headerInner">
-              <div className="headerBasket">
+              <Link to={'/cart'} className="headerBasket">
                 <CiShoppingBasket size={"24px"} color={"#101010"} />{" "}
                 <span>{totalNumCartItems}</span>
-              </div>
+              </Link>
               <div>{currentUser.displayName}</div>
-              <div className="headerImg">
-                <img src={currentUser.photoURL} alt="" />
-              </div>
+              {/* <div onClick={() => props.onShowCart()}>showcart</div> */}
               <div
                 className="headerArrow"
                 onClick={() => setDropdown((current) => !current)}

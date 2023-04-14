@@ -1,0 +1,109 @@
+.cartItems {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 2rem;
+    margin: 0 auto;
+    margin-top: 4rem;
+
+    .cartItem {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e1e1e1;
+        -webkit-transition: all .5s cubic-bezier(.77,0,.175,1);
+        -moz-transition: all .5s cubic-bezier(.77,0,.175,1);
+        -o-transition: all .5s cubic-bezier(.77,0,.175,1);
+        -ms-transition: all .5s cubic-bezier(.77,0,.175,1);
+        transition: all .5s cubic-bezier(.77,0,.175,1);
+        animation: slide-up .5s ease;
+        &-controls{
+            display: flex;
+            flex-direction: column;
+            width: 35%;
+            gap: 0.5rem;
+            margin: 0 auto;
+            text-align: center;
+            .control{
+                border: 1px solid #e1e1e1;
+                padding: 10px 10px;
+                cursor: pointer;
+                transition: all 0.5s ease;
+                &:hover{
+                    background: #cacaca;
+                    border: 1px solid #e1e1e1;;
+                }
+            }
+            .add{
+               color: #101010; 
+            }
+            .reduce{
+                color: #101010; 
+            }
+        }
+        &-inner {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1.2rem;
+            display: grid;
+            // grid-template-columns: 1fr 20px 1fr 80px 50px;
+            grid-template-columns: 0.35fr 0.5fr 3fr 80px 50px;
+            // grid-template-columns: 0.5fr 0.25fr 2fr 1fr;
+            gap: 2rem;
+        }
+
+        &-title {
+            margin: auto 0;
+            font-size: 1.25rem;
+        }
+
+        &-remove {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            border: 1px solid #e1e1e1;
+            color: #4a4a4a;
+            padding: 12px 16px;
+        }
+
+        &-details {
+            a {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #101010;
+                text-decoration: underline;
+            }
+        }
+
+        &-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            .spec-title {
+                color: #8d8d8d;
+                font-size: 12px;
+                font-weight: 700;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+
+        &-thumb {
+            width: 120px;
+            height: 120px;
+            margin: auto 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+.cartTotal{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

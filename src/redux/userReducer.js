@@ -1,8 +1,17 @@
 import userTypes from "./user/userTypes";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+
 const INITIAL_STATE = {
   currentUser: null,
   userErrors: [],
   resetPasswordSuccess: false
+};
+
+const persistConfig = {
+  key: "user",
+  storage: storage,
+  whitelist: ["currentUser"]
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -33,4 +42,4 @@ const userReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default userReducer;
+export default persistReducer(persistConfig, userReducer);

@@ -1,36 +1,33 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage, Login, Register, ResetPass } from "./pages";
+import { HomePage, Login, Register, ResetPass, Search, ProductDetails, AdminPanel } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "./default.scss";
 import ProtectedRoutes from "./pages/routes/protectedRoutes/protectedRoutes";
-import AdminPanel from "./pages/admin/AdminPanel";
 import RootLayout from "./components/layout/RootLayout";
 import { useEffect } from "react";
 import { checkUserSession } from "./redux/user/user.actions";
 import WithAuth from "./hooks/WithAuth";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import Dashboard from "./pages/routes/Dashboard/Dashboard";
 import { useDispatch } from "react-redux";
 import WithAdminAuth from "./hooks/withAdminAuth";
-import Search from "./pages/search/Search";
-import ProductDetails from "./pages/productDetails/ProductDetails";
+import Cart from "./components/Cart/Cart";
+
 const App = (props) => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(checkUserSession());
   }, [dispatch]);
-
   return (
     <BrowserRouter>
       <ToastContainer
-        position="bottom-left"
-        autoClose={2000}
-        hideProgressBar={false}
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         draggable
-        theme="light"
+        theme="dark"
       />
       <Routes>
         <Route path={"/"} element={<RootLayout />}>
@@ -40,6 +37,7 @@ const App = (props) => {
           <Route path={"/product/:productID"} element={<ProductDetails />} />
           <Route path={"/resetpass"} element={<ResetPass />} />
           <Route path={"/search"} element={<Search />} />
+          <Route path={"/cart"} element={<Cart />} />
           <Route path={"/search/:filterType"} element={<Search />} />
           <Route
             path={"/admin"}

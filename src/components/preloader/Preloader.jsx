@@ -6,7 +6,7 @@ const Preloader = (props) => {
     <div>
       loading
     </div>,
-    document.getElementById("preloader")
+    document.getElementById("modal-root")
   );
 };
 
