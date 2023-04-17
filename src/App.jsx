@@ -7,10 +7,10 @@ import {
   ResetPass,
   Search,
   ProductDetails,
-  AdminPanel,
   Dashboard,
   ProtectedRoutes,
   Home,
+  AdminPanel,
 } from "./pages";
 import { Cart, RootLayout } from "./components";
 import { checkUserSession } from "./redux/user/user.actions";
@@ -18,12 +18,13 @@ import { useDispatch } from "react-redux";
 import "./default.scss";
 import WithAdminAuth from "./hooks/withAdminAuth";
 import { WithAuth } from "./hooks";
-import NewAdminPanel from "./pages/routes/admin/NewAdminPanel";
+import { fetchProductsStart } from "./redux/products/products.actions";
 
 const App = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkUserSession());
+    dispatch(fetchProductsStart(""));
   }, [dispatch]);
   return (
     <BrowserRouter>
@@ -51,7 +52,7 @@ const App = (props) => {
             path={"/admin"}
             element={
               <WithAdminAuth>
-                <NewAdminPanel />
+                <AdminPanel />
               </WithAdminAuth>
             }
           />
