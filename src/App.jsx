@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import "./default.scss";
 import WithAdminAuth from "./hooks/withAdminAuth";
 import { WithAuth } from "./hooks";
+import NewAdminPanel from "./pages/routes/admin/NewAdminPanel";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const App = (props) => {
             path={"/admin"}
             element={
               <WithAdminAuth>
-                <AdminPanel />
+                <NewAdminPanel />
               </WithAdminAuth>
             }
           />
